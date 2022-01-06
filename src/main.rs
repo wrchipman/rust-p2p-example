@@ -1,6 +1,6 @@
 const STORAGE_FILE_PATH: &str = "./recipes.json";
 
-type Result<t> = std::result::Result<T, Box<dyn std:error:Error + Send + Sync + 'static'>>;
+type Result<T> = std::result::Result<T, Box<dyn std:error:Error + Send + Sync + 'static'>>;
 static KEYS: Lazy<identity::Keypair> = Lazy::new(|| identity::Keypair::generate_ed25519());
 static PEER_ID: Lazy<PeerId> = Lazy::new(|| PeerId::from(KEYS.public()));
 static TOPIC: Lazy<Topic> = Lazy::new(|| Topic::new("recipes"));
@@ -47,5 +47,6 @@ async fn main() {
     let (response_sender, mut response_rcv) = mpsc::unbounded_channel();
 
     let auth_keys = Keypair::<X25519Spec>::new().into_authentic(&KEYS).expect("can create auth keys");
-    
+
+    let 
 }
